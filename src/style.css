@@ -1,0 +1,494 @@
+body, html, #root{
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+#App{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto auto;
+  overflow: auto;
+  height: 100%;
+  background-color: rgb(46, 119, 161);
+}
+
+
+.App-dark-mode{
+  background-image: url('./nightsky-background.jpg');
+  background-position: center;
+  background-position-x: 26%;
+}
+
+
+
+.navbar{
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  width: 100%;
+  background-color:#b1b1b133;
+  
+}
+.navbar>h1{
+  margin: auto 3rem;
+  color: rgb(250, 196, 59);
+}
+.navbar>a{
+  font-size: 20px;
+  margin-right: auto;
+  color: rgb(197, 156, 52);
+}
+
+#searchfield{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 35px 1fr ;
+  gap: 6px;
+  font-size: 18px;
+  margin-left: 1rem;
+  width: max-content;
+  padding-right: 3rem;
+  padding-top: 2rem;
+
+}
+#searchfield>input{
+  font-size: 18px;
+  border-radius: 10px;
+  border: solid white;
+}
+
+
+#searchfield>input:focus{
+  border: solid white;
+  box-shadow: 0 0 0px 0px white;
+  outline-style: none !important;
+}
+#weather-cards-container{
+  margin: auto;
+}
+
+#weather-cards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 20px;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  
+}
+
+#card{
+  background-color: hsla(0, 0%, 65%, 0.555);
+  color: rgb(255, 255, 255);
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 30rem;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.card-night-mode{
+  background-color: rgba(0, 0, 0, 0.171);
+  color: white;
+  
+}
+
+.card-light-mode{
+  background-color: rgba(0, 0, 0, 0.541);
+
+}
+
+.temperature-labels{
+  color: white;
+}
+
+
+.location{
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  gap: 3rem;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.location>div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#location-temperature{
+  gap: 20px;
+  margin: auto 1rem;
+  
+}
+#feels-like{
+  font-size: 30px;
+}
+
+#icon-description{
+  display:flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+#icon-description>img{
+  width: 90%;
+  height: auto;
+}
+
+#description{
+  margin: 0;
+}
+
+#temperature{
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  font-size: 24px;
+}
+
+.temp-info{
+  margin-left: 1rem;
+}
+
+.wind{
+  display: flex;
+  font-size: 20px;
+  width: 100%;
+  grid-column: span 2;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+#humidity-container{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+#humidity-icon{
+  width: 30px;
+}
+
+.temperature-labels{
+  text-align: left;
+}
+
+
+.change-units{
+  display: flex;
+  font-size: 20px;
+  margin: 1rem;
+  
+}
+
+#celsius, #fahr {
+  border:solid rgba(255, 255, 255, 0.37);
+  margin-right: 1rem;
+  border-radius: 10rem;
+  padding: .3rem;
+  font-size: 20px;
+  width: fit-content;
+  height: fit-content;
+}
+#celsius:hover, #fahr:hover {
+  border: solid rgba(255, 255, 255, 0.712);
+  cursor: pointer;
+}
+#compass{
+  width: 4rem;
+}
+.wind{
+  justify-content: space-around;
+  align-items: center;
+}
+
+#update-container{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin-left: 1rem;
+}
+
+#update-icon{
+  width: 20pX;
+}
+#update-icon:hover{
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.253);
+  border-radius: 100%;
+}
+
+
+#today-forecast{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  margin: 0 .6rem;
+  padding: 0 .6rem;
+  gap: 1rem;
+}
+#today-forecast-container {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 3rem;
+}
+
+
+
+#forecast-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3rem 6rem auto;
+  border-radius: 10px 0 0 10px;
+  background-color:#fffefe7e;
+  height: 39rem;
+  width:fit-content;
+  justify-content: center;
+  border: 30px;
+  color: black;
+  
+}
+
+.forecast-container-dark-mode{
+  background-color:#141926;
+  color: white 
+}
+
+#forecast{
+  display:grid;
+  overflow-x: auto;
+}
+
+
+#day{
+  display: grid;
+  grid-column: span 10;
+  margin-left: 1rem;
+}
+
+#day>p{
+  margin: 0;
+}
+
+#day:hover{
+  cursor: pointer;
+  box-shadow: -3px 0 gray;
+}
+
+#extended{
+  display: none;;
+  padding: .6rem;
+}
+#extended>p{
+  margin: .2rem;
+  text-align: center;
+}
+
+#search-icon{
+  width: 30px;
+  transform: rotate(75deg);
+  filter:invert();
+}
+#search-icon:hover{
+  cursor: pointer;
+  transform: rotate(85deg);
+}
+
+.search-icon-night{ 
+  width: 30px;
+  filter:invert();
+  transform: rotate(75deg);
+}
+
+#search-icon-night:hover{
+  cursor: pointer;
+  transform: rotate(85deg);
+}
+
+
+
+#found-locations{
+  display: block;
+  z-index: 1;
+  background-color: white;
+  margin-top: -10px;
+  grid-column: 2;
+}
+#found-locations>p{
+  margin: 0;
+  color:  red;
+}
+
+.locations-name:hover{
+ cursor: pointer;
+ box-shadow: 0px 5px #819b9f;
+ background-color: #203460;
+ color:white
+}
+
+#secondary-info{
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .App-dark-mode{
+    background-image: url('./nightsky-background.jpg');
+    background-position: center;
+    background-position-x: 53%;
+  }
+  #card{
+    display: none;
+  }
+  .navbar{
+    display: flex;
+    min-width: 200px;
+    width: 100%;
+    font-size: smaller;
+  }
+  .navbar>h1, .navbar>a{
+    margin: 0 1%;
+    padding: 1%;
+  }
+   #forecast-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 95vw;
+    min-width: 200px;
+
+  }
+
+  #searchfield{
+    display: grid;
+    max-width: max-content;
+    margin-bottom: 1rem;
+  }
+
+  #searchfield>input, #found-locations{
+    min-width: 3rem;
+    max-width: 60vw;
+  }
+
+  #secondary-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10%;
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+  #secondary-info>p{
+    margin: 1% 0;
+    font-size: large;
+  }
+}
+
+
+@media (max-height:600px ) {
+
+  .App-dark-mode{
+    background-image: url('./nightsky-background.jpg');
+    background-position: center;
+    background-position-x: 56%;
+    background-position-y: 44%;
+  }
+
+  .navbar{
+    display: none;
+  }
+  #weather-cards-container, #weather-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-height: 96vh;
+  }
+  #forecast-container{
+    max-height:96vh;
+    max-width: 40vw;
+    overflow-y: scroll;
+  }
+  #forecast{
+    margin:auto 10%;
+  }
+  #today-forecast{
+    margin: auto;
+    height: max-content;
+  }
+  #card{
+    overflow: scroll;
+    max-width: 55vw;
+  }
+  #card>div{
+    margin: auto;
+  }
+  .wind{
+    padding: 0;
+    margin: auto;
+    font-size: medium;
+  }
+  #temperature{
+    font-size: medium;
+    height: fit-content;
+  }
+  #compass, #icon-description>img {
+    width: 40px;
+    height: 40px;
+  }
+  #today-forecast>div>img{
+    width: 40px;
+    height: 40px;
+  }
+  #today-forecast>div>p{
+    margin: 0.3rem 0;
+  }
+  .location{
+    height: 30%;
+  }
+  #temperature>p{
+    margin: 0 13px;
+  }
+  #location-temperature{
+    font-size: large;
+  }
+  #icon-description{
+    width: fit-content;
+  }
+  #searchfield{
+    display: grid;
+    margin: auto;
+    margin-left: 15%;
+  }
+  #citysearch{
+    max-width: 60%;
+  }
+  #search-icon{
+    width: 25px;
+  }
+  .change-units{
+    margin: auto;
+  }
+
+  #found-locations{
+    width: 63%;
+  }
+
+}
