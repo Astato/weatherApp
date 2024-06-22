@@ -34,6 +34,8 @@ const WeatherCards = (props) => {
   const [isSearch, setIsSearch] = useState(false);
   const [todayForecast, setTodayForecast] = useState("");
 
+  const KEY = process.env.REACT_APP_KEY;
+
   const getweather = async (location, coords) => {
     let currentWeather;
     if (coords) {
@@ -41,7 +43,7 @@ const WeatherCards = (props) => {
       const userLongitude = location.longitude;
       try {
         currentWeather = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${userLatitude}&lon=${userLongitude}&appid=58ab3e4fa033b9933bab777dff79301b`,
+          `https://api.openweathermap.org/data/2.5/weather?lat=${userLatitude}&lon=${userLongitude}&appid=${KEY}`,
           { mode: "cors" }
         );
       } catch (error) {
@@ -53,7 +55,8 @@ const WeatherCards = (props) => {
         currentWeather = await fetch(
           "https://api.openweathermap.org/data/2.5/weather?q=" +
             location +
-            "&appid=58ab3e4fa033b9933bab777dff79301b",
+            "&appid=" +
+            KEY,
           { mode: "cors" }
         );
       } catch (error) {
@@ -88,9 +91,10 @@ const WeatherCards = (props) => {
 
     const getLocation = async (location) => {
       const searchForLocation = await fetch(
-        "http://api.openweathermap.org/geo/1.0/direct?q=" +
+        "https://api.openweathermap.org/geo/1.0/direct?q=" +
           location +
-          "&limit=5&appid=58ab3e4fa033b9933bab777dff79301b"
+          "&limit=5&appid=" +
+          KEY
       );
       const locationObject = await searchForLocation.json();
       return setLocationData(locationObject), setIsLocation(true);
@@ -226,7 +230,7 @@ const WeatherCards = (props) => {
     icon,
   } = weatherData.weather ? { ...weatherData.weather[0] } : {};
   const iconURL = icon
-    ? "http://openweathermap.org/img/w/" + icon + ".png"
+    ? "https://openweathermap.org/img/w/" + icon + ".png"
     : "";
 
   function handleUnitChange(unit) {
