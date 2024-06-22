@@ -36,6 +36,7 @@ const WeatherCards = (props) => {
 
   const KEY = process.env.REACT_APP_KEY;
 
+  console.log(KEY);
   const getweather = async (location, coords) => {
     let currentWeather;
     if (coords) {
@@ -46,6 +47,7 @@ const WeatherCards = (props) => {
           `https://api.openweathermap.org/data/2.5/weather?lat=${userLatitude}&lon=${userLongitude}&appid=${KEY}`,
           { mode: "cors" }
         );
+        console.log(currentWeather, "HERE? ");
       } catch (error) {
         console.log(error);
         return null;
@@ -71,7 +73,10 @@ const WeatherCards = (props) => {
     }
     const latitudeResult = weather.coord.lat;
     const longitudeResult = weather.coord.lon;
-    window.parent.postMessage({ lat: latitudeResult, lon: longitudeResult });
+    window.parent.postMessage(
+      { lat: latitudeResult, lon: longitudeResult },
+      "https://jade-narwhal-43b15e.netlify.app"
+    );
     // Example of sending postMessage from weather app
     // window.parent.postMessage(
     //   { latitude: 123, longitude: 456 },
@@ -87,7 +92,7 @@ const WeatherCards = (props) => {
     } else if (location) {
       getweather(location);
     }
-  }, [location]);
+  }, [location, props.userPosition]);
 
   function FilterSearch() {
     const citysearch = document.getElementById("citysearch");
