@@ -72,6 +72,12 @@ const WeatherCards = (props) => {
     const latitudeResult = weather.coord.lat;
     const longitudeResult = weather.coord.lon;
     window.parent.postMessage({ lat: latitudeResult, lon: longitudeResult });
+    // Example of sending postMessage from weather app
+    // window.parent.postMessage(
+    //   { latitude: 123, longitude: 456 },
+    //   "http://localhost:5173"
+    // );
+
     return setWeatherData(weather);
   };
 
