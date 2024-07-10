@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useState, useEffect } from "react";
 import Forecast from "./Forecast";
@@ -28,7 +27,7 @@ const WeatherCards = (props) => {
   const [feelsTemp, setFeelsTemp] = useState("");
   const [windSpeed, setWindSpeed] = useState("");
   const [speedUnit, setSpeedUnit] = useState("mph");
-  const [tempUnit, setTempUnit] = useState("°F");
+  const [tempUnit, setTempUnit] = useState("°C");
   const [location, setLocation] = useState("");
   const [locationInput, setLocationInput] = useState("");
   const [isSearch, setIsSearch] = useState(false);
@@ -72,14 +71,14 @@ const WeatherCards = (props) => {
     const latitudeResult = weather.coord.lat;
     const longitudeResult = weather.coord.lon;
     window.parent.postMessage(
-      { lat: latitudeResult, lon: longitudeResult },
-      "https://jade-narwhal-43b15e.netlify.app"
+      {
+        latitude: latitudeResult,
+        longitude: longitudeResult,
+        weather: weather,
+        tempUnit: tempUnit,
+      },
+      "http://localhost:5173/" //// CHANGE THIS ON PROD TO phone NETLIFY ADRESS
     );
-    // Example of sending postMessage from weather app
-    // window.parent.postMessage(
-    //   { latitude: 123, longitude: 456 },
-    //   "http://localhost:5173"
-    // );
 
     return setWeatherData(weather);
   };
@@ -247,8 +246,15 @@ const WeatherCards = (props) => {
     : "";
 
   function handleUnitChange(unit) {
-    if (tempUnit === "°F" && unit === "C" && speedUnit === "mph") {
+    window.parent.postMessage(
+      {
+        tempUnit: "°" + unit,
+      },
+      "https://gabrielfernandoleiva.netlify.app/"
+    );
+    if (unit === "C") {
       setTempUnit("°C");
+
       setSpeedUnit("kph");
       setWindSpeed((windSpeed * 1.609).toFixed(2));
       setTemperature((((temperature - 32) * 5) / 9).toFixed());
@@ -256,7 +262,7 @@ const WeatherCards = (props) => {
       setMaxTemp((((maxTemp - 32) * 5) / 9).toFixed());
       setMinTemp((((minTemp - 32) * 5) / 9).toFixed());
     }
-    if (tempUnit === "°C" && unit === "F" && speedUnit === "kph") {
+    if (unit === "F") {
       setTempUnit("°F");
       setSpeedUnit("mph");
       setWindSpeed((windSpeed / 1.609).toFixed(2));
