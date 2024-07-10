@@ -77,7 +77,7 @@ const WeatherCards = (props) => {
         weather: weather,
         tempUnit: tempUnit,
       },
-      "https://gabrielfernandoleiva.netlify.app/" //// CHANGE THIS ON PROD TO phone NETLIFY ADRESS
+      "https://gabrielfernandoleiva.netlify.app" //// CHANGE THIS ON PROD TO phone NETLIFY ADRESS
     );
 
     return setWeatherData(weather);
@@ -246,11 +246,14 @@ const WeatherCards = (props) => {
     : "";
 
   function handleUnitChange(unit) {
+    if ("°" + unit === tempUnit) {
+      return;
+    }
     window.parent.postMessage(
       {
         tempUnit: "°" + unit,
       },
-      "https://gabrielfernandoleiva.netlify.app/"
+      "https://gabrielfernandoleiva.netlify.app"
     );
     if (unit === "C") {
       setTempUnit("°C");
