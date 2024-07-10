@@ -21,7 +21,7 @@ export function mapForecast(tempUnit, forecast) {
       feels_like = (feels_like - 273.15).toFixed();
     }
     const { main, icon } = { ...item.weather[0] };
-    const iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+    const iconURL = "https://openweathermap.org/img/w/" + icon + ".png";
     if (Number(forecastDay) > currentDay) {
       upcomingForecast.push([
         forecastDay,

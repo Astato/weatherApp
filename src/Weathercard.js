@@ -77,7 +77,7 @@ const WeatherCards = (props) => {
         weather: weather,
         tempUnit: tempUnit,
       },
-      "http://localhost:5173/" //// CHANGE THIS ON PROD TO phone NETLIFY ADRESS
+      "https://gabrielfernandoleiva.netlify.app/" //// CHANGE THIS ON PROD TO phone NETLIFY ADRESS
     );
 
     return setWeatherData(weather);
